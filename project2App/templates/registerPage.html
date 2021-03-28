@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registerPageStyle.css' %}">
+    <title>Registration</title>
+    <style type='text/css'>
+    	body {
+    		background-image: url('{{backgroundImage.content.url}}');
+    		background-size: cover;
+    		background-repeat: no-repeat;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main_container">
+		<div class="center_main">
+			<form method='POST' action="/register">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input class="register_button" type='submit' value="Register" />
+			</form>
+		</div>
+	</div>
+</body>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userPageStyle.css' %}">
+    <title>{{image.title}}</title>
+    <style type='text/css'>
+    	body {
+    		background-image: url('{{backgroundImage.content.url}}');
+    		background-size: cover;
+    		background-repeat: no-repeat;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main_container">
+        <div class="main_header">
+            <a href="/userPage/{{user.id}}"><img class="user_dropdown" src="{{profileImage.content.url}}"></a>
+            <h1>{{user.first_name}} {{user.last_name}}</h1>
+            <div class="sub_header">
+                <div class="sub_header_box"><a href="/restaurantPage">Restaurants</a></div>
+                <div class="sub_header_box"><a href="/uploadImagePage">Upload Image</a></div>
+                <div class="sub_header_box"><a href="/createRestaurant">Create restaurant</a></div>
+                <div class="sub_header_box"><a href="/logout">Logout</a></div>
+            </div>
+        </div>
+        <h1>{{image.title}}</h1>
+        <div class="image_container">
+			<img style="max-height: 100%;" src="{{image.content.url}}">
+		</div>
+    </div>
+	
+</body>

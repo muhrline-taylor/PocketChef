@@ -1,0 +1,33 @@
+body {
+	background-color: teal;
+}
+
+.main_container {
+	width: 62%;	
+	height: 600px; 
+	margin-left: 16%;
+	margin-top: 10%;
+	background-color: rgba(184, 183, 183);
+	border-radius: 100px;
+}
+
+.center_main {
+	margin-left: 32%;
+	padding-top: 6%;
+	width: 30%;
+	height: 50%;
+}
+
+p {
+	font-family: sans-serif;
+}
+
+input {
+	float: right;
+}
+
+.register_button {
+	float: none;
+	margin-left: 40%;
+	margin-top: 5%;
+}

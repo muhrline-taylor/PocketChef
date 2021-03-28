@@ -1,0 +1,9 @@
+.main_container {
+	width: 87%;	
+	height: 770px; 
+	margin-left: 6%;
+	margin-top: 4%;
+	background-color: rgba(184, 183, 183);
+	border-radius: 50px;
+	box-shadow: -7px 15px 30px;
+}

@@ -1,0 +1,47 @@
+h1 {
+	color: teal;
+	font-family: sans-serif;
+}
+
+.main_container {
+	width: 62%;	
+	height: 600px; 
+	margin-left: 16%;
+	margin-top: 10%;
+	background-color: rgba(184, 183, 183);
+	border-radius: 100px;
+}
+
+.sub_main_top {
+	height: 30%;
+	padding-top: 10%;
+	padding-left: 33%;
+	padding-right: 40%;
+}
+
+input {
+	float: right;
+}
+
+input.form_submit {
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+p {
+	font-family: sans-serif;
+}
+
+.sub_main_bottom {
+	text-align: center;
+	width: 95%;
+}
+
+a {
+	text-decoration: none;
+	font-style: italic;
+	font-size: 18px;
+}

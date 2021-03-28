@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userPageStyle.css' %}">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+    	body {
+    		background-image: url('{{backgroundImage.content.url}}');
+    		background-size: cover;
+    		background-repeat: no-repeat;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main_container">
+        <div class="main_header">
+            <a href="/userPage/{{user.id}}"><img class="user_dropdown" src="{{profileImage.content.url}}"></a>
+            <h1>{{user.first_name}} {{user.last_name}}</h1>
+            <div class="sub_header">
+                <div class="sub_header_box"><a href="/home">Home</a></div>
+                <div class="sub_header_box"><a href="/restaurantPage">Restaurants</a></div>
+                <div class="sub_header_box"><a href="/uploadImagePage">Upload Image</a></div>
+                <div class="sub_header_box"><a href="/logout">Logout</a></div>
+            </div>
+        </div>
+        {% for restaurant in restaurants %}
+            <p><a href="/viewRestaurant/{{restaurant.id}}">{{restaurant.name}}</a></p>
+            <p>Location: {{restaurant.address}}, {{restaurant.cityState}}</p>     
+            <p>Style: {{restaurant.style}}</p>      
+        {% endfor %}
+        <a href="/createRestaurant">Create restaurant</a>
+	</div>
+</body>

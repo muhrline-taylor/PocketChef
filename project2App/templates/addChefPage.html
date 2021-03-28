@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userPageStyle.css' %}">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+    	body {
+    		background-image: url('{{backgroundImage.content.url}}');
+    		background-size: cover;
+    		background-repeat: no-repeat;
+    	}
+    </style>
+</head>
+<body>
+    <div class="main_container">
+        <div class="main_header">
+            <a href="/userPage/{{user.id}}"><img class="user_dropdown" src="{{profileImage.content.url}}"></a>
+            <h1>{{ restaurant.name }}</h1>
+            <div class="sub_header">
+                <div class="sub_header_box"><a href="/home">Home</a></div>
+                <div class="sub_header_box"><a href="/restaurantPage">Restaurants</a></div>
+                <div class="sub_header_box"><a href="/uploadImagePage">Upload Image</a></div>
+                <div class="sub_header_box"><a href="/logout">Logout</a></div>
+            </div>
+        </div>
+        <form action="/addChefToRestaurant" method='POST'>
+            {% csrf_token %}
+            <select name="chefs" id="Chefs">
+                {% for user in allUsers %}
+                    <option value={{user.id}}>{{user.first_name}} {{user.last_name}}</option>
+                {% endfor %}
+            </select>
+            <input type='hidden' value={{restaurant.id}} name="restaurant">
+            <input type='submit' value='Add Chef' />
+        </form>
+        <p><a href='/home'>Home</a></p>
+        <p><a href="/logout">Logout</a></p>
+    </div>
+</body>

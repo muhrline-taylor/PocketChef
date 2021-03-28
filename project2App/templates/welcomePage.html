@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/welcomePageStyle.css' %}">
+    <title>Welcome</title>
+    <style type='text/css'>
+    	body {
+    		background-image: url('{{backgroundImage.content.url}}');
+    		background-size: cover;
+    		background-repeat: no-repeat;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main_container">
+		<div class="sub_main_top">
+			<form method='POST' action="/">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input class="form_submit" type='submit' value='Log In' />
+			</form>
+			
+		</div><!--end sub main top-->
+		<div class="sub_main_bottom">
+			<a href="/register">Sign Up</a>
+		</div>
+	</div><!--end main container-->
+</body>

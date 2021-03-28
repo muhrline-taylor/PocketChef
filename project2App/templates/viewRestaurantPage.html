@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/userPageStyle.css' %}">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+    	body {
+    		background-image: url('{{backgroundImage.content.url}}');
+    		background-size: cover;
+    		background-repeat: no-repeat;
+    	}
+    </style>
+</head>
+<body>
+	<div class="main_container">
+        <div class="main_header">
+            <a href="/userPage/{{user.id}}"><img class="user_dropdown" src="{{profileImage.content.url}}"></a>
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            <div class="sub_header">
+                <div class="sub_header_box"><a href="/home">Home</a></div>
+                <div class="sub_header_box"><a href="/restaurantPage">Restaurants</a></div>
+                <div class="sub_header_box"><a href="/uploadImagePage">Upload Image</a></div>
+                <div class="sub_header_box"><a href="/logout">Logout</a></div>
+            </div>
+        </div>
+        <div class="main_pic_container">
+            <img style="max-height: 98%;" src="{{restaurantProfilePic.content.url}}">
+            <div><h1>{{ restaurant.name }}</h1></div>
+            <div class="main_content">
+                <p><div class="bold">Location: </div>{{restaurant.address}}, {{restaurant.cityState}}</p>
+                <p><div class="bold">Style: </div>{{restaurant.style}}</p>
+                <p><div class="bold">Chefs: </div></p>
+                    {% for chef in chefs %}
+                        {{chef.first_name}} {{chef.last_name}},
+                    {% endfor %}
+                    <p><div class='bold'>Change Profile Pic to:</div></p>
+                    <form action="/restaurantProfilePic" method='POST'>
+                        {% csrf_token %}
+                        <select name='chosenPic' id='chosenPic'>
+                            {% for picture in restaurantPictures %}
+                                <option value="{{picture.title}}">{{picture.title}}</option>
+                            {% endfor %}
+                            <input type="hidden" name="restaurantID" id="restaurantID" value="{{restaurant.id}}">
+                            <input type='submit' value='Confirm' />
+                        </select>
+                    </form>
+            </div>
+            <div class="main_content2">
+                <p><div class='bold'>Phone #:</div>{{phone}}</p>
+            </div>
+        </div>
+        <!-- <div class='zoomedPic'>
+                
+        </div> -->
+        {% for picture in restaurantPictures %}
+            <div class="picture_box">
+                <a href="/viewImagePage/{{picture.id}}"><img style="max-width: auto; max-height: 100px; margin: 0px auto;" src="{{picture.content.url}}"></a>
+                <p class='picture_name'>{{picture.title}}</p>
+            </div>
+            
+        {% endfor %}
+        
+        <div class="footer">
+            <div class="footer_box"><a href="/addChef/{{restaurant.id}}">Add Chef</a></div>
+            <div class="footer_box"><a href="/uploadRestaurantPicture/{{restaurant.id}}">Add Photos</a></div>
+        </div>
+	</div>
+</body>
